@@ -24,7 +24,7 @@ $simplex
 #define STEPS 5
 vec4 volumeColor( vec3 ro , vec3 rd , mat3 iBasis ){
 
-  vec3 col = vec3( 0. );
+  vec3 col = vec3(0.);
   float lum = 0.;
   for( int i = 0; i < STEPS; i++ ){
 
@@ -46,7 +46,10 @@ vec4 volumeColor( vec3 ro , vec3 rd , mat3 iBasis ){
 
   } 
 
-  return vec4( col , 1. ) / float( STEPS );
+
+
+  vec4 fC = vec4( col , 1. ) / float( STEPS );
+   return vec4( vec3(1.3) - fC.xyz , 1.);
 
 
 }
