@@ -36,13 +36,16 @@ vec4 volumeColor( vec3 ro , vec3 rd , mat3 iBasis ){
 
     float id = float( i ) / float( STEPS );
 
-    vec4 t = texture2D( t_text , vec2( -p.y * 2.  + .5 , p.z * 2. + .5 )  );
+   // vec4 t = texture2D( t_text , vec2( -p.y * 2.  + .5 , p.z * 2. + .5 )  );
 
     vec3 c = hsv( p.x * 6.  + lu / 20. + sin( time  * .1 ), 1. , .4 ); 
-    col += t.a * c  + ((1.-t.a) * (1.-c)) ;
-    col *= ((lu+1.)/2. + t.a);
+     //col += t.a * c  + ((1.-t.a) * (1.-c)) ;
+     //col *= ((lu+1.)/2. + t.a);
+     col +=  c;//  + ((1.-t.a) * (1.-c)) ;
+    
+    col *= ((lu+1.)/2.);
 
-    if( lu > (-p.x  * 40.) + 2.3 ){ col =  float( STEPS ) * normalize( col );  break; }
+    if( lu > (-p.x  * 10.) + 1. ){ col =  float( STEPS ) * normalize( col );  break; }
 
   } 
 

@@ -39,7 +39,7 @@
         t_matcap:{ type:"t" , value: matcap },
         t_text:{type:"t", value:text},
         //t_audio:{type:"t",value:null},
-        stepDepth:{ type:"f" , value: .02 },
+        stepDepth:{ type:"f" , value: .04 },
         oscillationSize:{ type:"f" , value: 30. },
         lightPos:{ type:"v3" , value: new THREE.Vector3( 2 , 0 , 0 ) },
 
@@ -62,8 +62,8 @@
         stream.play();
       }
 
-      shaders.load( 'vs-bifrost' , 'bifrost' , 'vertex' );
-      shaders.load( 'fs-bifrost' , 'bifrost' , 'fragment' );
+      //shaders.load( 'vs-bifrost' , 'bifrost' , 'vertex' );
+      //shaders.load( 'fs-bifrost' , 'bifrost' , 'fragment' );
 
       shaders.load( 'vs-hologram' , 'hologram' , 'vertex' );
       shaders.load( 'fs-hologram' , 'hologram' , 'fragment' );
@@ -152,7 +152,7 @@
         var d = clock.getDelta();
         uniforms.time.value += d
 
-        controls.update();
+        //controls.update();
 
         //cube.rotation.x += d/10;
         //cube.rotation.y += d/10;
