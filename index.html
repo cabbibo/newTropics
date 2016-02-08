@@ -59,7 +59,7 @@
       shaders.shaderSetLoaded = function(){
         init();
         animate();
-        stream.play();
+       
       }
 
       //shaders.load( 'vs-bifrost' , 'bifrost' , 'vertex' );
@@ -70,6 +70,9 @@
 
 
       var title;
+
+      var blipSpeed = 1;
+      var blipSlowdown = .1;
 
 
       function init(){
@@ -87,6 +90,8 @@
         geometry.computeTangents();
 
         clock = new THREE.Clock();
+
+
        
 
         var dir = [
@@ -137,7 +142,7 @@
         stats.domElement.style.left = "0px";
         stats.domElement.style.bottom = "-30px";
         stats.domElement.style.zIndex = "999";
-        document.body.appendChild( stats.domElement );
+        //document.body.appendChild( stats.domElement );
 
         
         // Making sure our renderer is always the right size
@@ -150,7 +155,10 @@
       function animate(){
 
         var d = clock.getDelta();
-        uniforms.time.value += d
+        uniforms.time.value += d * blipSpeed;
+
+        blipSpeed -= blipSlowdown;
+        if( blipSpeed < 1 ){ blipSpeed = 1; }
 
         //controls.update();
 
@@ -189,6 +197,11 @@
 
       }
 
+      function blip(){
+
+        blipSpeed += 5;
+
+      }
 
 
     </script>
