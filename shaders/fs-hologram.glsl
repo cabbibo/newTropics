@@ -21,6 +21,12 @@ varying vec3 vPos;
 $hsv
 $simplex
 
+vec3 desaturate(vec3 color, float amount)
+{
+    vec3 gray = vec3(dot(vec3(0.2126,0.7152,0.0722), color));
+    return vec3(mix(color, gray, amount));
+}
+
 #define STEPS 5
 vec4 volumeColor( vec3 ro , vec3 rd , mat3 iBasis ){
 
@@ -43,9 +49,9 @@ vec4 volumeColor( vec3 ro , vec3 rd , mat3 iBasis ){
      //col *= ((lu+1.)/2. + t.a);
      col +=  c;//  + ((1.-t.a) * (1.-c)) ;
     
-    col *= ((lu+1.)/2.);
+    col *= ((lu+.8)/.9);
 
-    if( lu > (-p.x  * 10.) + 1. ){ col =  float( STEPS ) * normalize( col );  break; }
+    if( lu > (-p.x  * 10.) + 1. ){ col =  float( STEPS ) * desaturate( normalize( col ) , .5 );  break; }
 
   } 
 
